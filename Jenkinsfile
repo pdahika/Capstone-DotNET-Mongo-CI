@@ -81,11 +81,11 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'git-token', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                             # Clone the CD Repo
-                            git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jaiswaladi246/Capstone-DotNET-Mongo-CD.git
+                            git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/pdahika/Capstone-DotNET-Mongo-CD.git
                             
                             # Update the tag in manifest
                             cd Capstone-DotNET-Mongo-CD
-                            sed -i "s|adijaiswal/noteapp:.*|adijaiswal/noteapp:${IMAGE_TAG}|" Manifest/manifest.yaml
+                            sed -i "s|pdahikar/noteapp:.*|pdahikar/noteapp:${IMAGE_TAG}|" Manifest/manifest.yaml
                             
                             # Confirm Changes
                             echo "Updated manifest file contents:"
@@ -130,7 +130,7 @@ pipeline {
                 subject: "${jobName} - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
                 body: body,
                 to: '567adddi.jais@gmail.com',
-                from: 'jaiswaladi246@gmail.com',
+                from: 'prathmeshdahikar123@gmail.com',
                 replyTo: 'jenkins@devopsshack.com',
                 mimeType: 'text/html',
                

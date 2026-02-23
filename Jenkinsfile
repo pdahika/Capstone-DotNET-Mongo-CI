@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred') {
-                        sh "docker build -t adijaiswal/noteapp:$IMAGE_TAG ."
+                        sh "docker build -t pdahikar/noteapp:$IMAGE_TAG ."
                     }
                 }
             }
@@ -61,7 +61,7 @@ pipeline {
         
         stage('trivy Image Scan') {
             steps {
-              sh 'trivy image --format table -o trivy-image-report.html adijaiswal/noteapp:$IMAGE_TAG'
+              sh 'trivy image --format table -o trivy-image-report.html pdahikar/noteapp:$IMAGE_TAG'
             }
         }
         
@@ -69,7 +69,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred') {
-                        sh "docker push adijaiswal/noteapp:$IMAGE_TAG"
+                        sh "docker push pdahikar/noteapp:$IMAGE_TAG"
                     }
                 }
             }
